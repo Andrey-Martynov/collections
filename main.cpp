@@ -1,88 +1,35 @@
 #include <iostream>
+#include "Stack.h"
+#include "Queue.h"
 
 using namespace std;
 
-template<class T>
-struct Node {
-    T info;
-    Node<T> *next;
-};
-
-template<class T>
-void pushToStack(Node<T> *&top, T info) {
-    Node<T> *newItem = new Node<T>{info, top};
-    top = newItem;
-}
-
-template<class T>
-T popFromStack(Node<T> *&top) {
-    T info = top->info;
-    Node<T> *cur = top;
-    top = top->next;
-    delete cur;
-    return info;
-}
-
-template<class T>
-void pushToQueue(Node<T> *&top, T info) {
-    Node<T> *newItem = new Node<T>{info, nullptr};
-    if (top == nullptr) {
-        top = newItem;
-        return;
-    }
-    Node<T> *cur = top;
-    while (cur->next != nullptr) {
-        cur = cur->next;
-    }
-    cur->next = newItem;
-}
-
-template<class T>
-T popFromQueue(Node<T> *&top) {
-    T info = top->info;
-    Node<T> *cur = top;
-    top = top->next;
-    delete cur;
-    return info;
-}
-
-template<class T>
-void print(Node<T> *top) {
-    cout << "-> ";
-    if (top == nullptr) {
-        cout << "empty";
-    }
-    while (top != nullptr) {
-        cout << top->info << " ";
-        top = top->next;
-    }
-    cout << endl;
-}
-
 int main() {
-    Node<int> *top = nullptr;
+    Stack<int> stack;
     cout << "Stack\n";
-    print(top);
+    stack.print();
     for (int i = 0; i < 10; i++) {
-        pushToStack(top, i * 10);
-        print(top);
+        stack.push(i * 10);
+        stack.print();
     }
-    print(top);
+    stack.print();
     cout << endl;
     for (int i = 0; i < 10; i++) {
-        cout << popFromStack(top) << endl;
-        print(top);
+        cout << stack.pop() << endl;
+        stack.print();
     }
-    cout<<"\n\nQueue\n";
+
+    cout << "\n\nQueue\n";
+    Queue<int> queue;
     for (int i = 0; i < 10; i++) {
-        pushToQueue(top, i * 10);
-        print(top);
+        queue.push(i * 10);
+        queue.print();
     }
-    print(top);
+    queue.print();
     cout << endl;
     for (int i = 0; i < 10; i++) {
-        cout << popFromQueue(top) << endl;
-        print(top);
+        cout << queue.pop() << endl;
+        queue.print();
     }
     return 0;
 }
