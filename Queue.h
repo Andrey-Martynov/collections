@@ -10,10 +10,12 @@ class Queue {
     };
 
     Node *head;
+    Node *tail;
 
 public:
     Queue() {
         head = nullptr;
+        tail = nullptr;
     }
 
     ~Queue() {
@@ -27,14 +29,11 @@ public:
     void push(T info) {
         Node *newItem = new Node{info, nullptr};
         if (head == nullptr) {
-            head = newItem;
+            head = tail = newItem;
             return;
         }
-        Node *cur = head;
-        while (cur->next != nullptr) {
-            cur = cur->next;
-        }
-        cur->next = newItem;
+        tail->next = newItem;
+        tail = newItem;
     }
 
     T pop() {
