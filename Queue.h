@@ -26,6 +26,10 @@ public:
         }
     }
 
+    bool isEmpty() {
+        return head == nullptr;
+    }
+
     void push(T info) {
         Node *newItem = new Node{info, nullptr};
         if (head == nullptr) {

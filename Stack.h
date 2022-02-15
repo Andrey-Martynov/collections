@@ -24,6 +24,10 @@ public:
         }
     }
 
+    bool isEmpty() {
+        return top == nullptr;
+    }
+
     void push(T info) {
         Node *newItem = new Node{info, top};
         top = newItem;
