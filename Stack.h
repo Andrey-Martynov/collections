@@ -41,14 +41,14 @@ public:
         return info;
     }
 
-    void print() {
-        std::cout << "-> ";
-        if (top == nullptr) {
-            std::cout << "empty";
+    friend std::ostream &operator<<(std::ostream &os, const Stack &stack) {
+        os << "-> ";
+        if (stack.top == nullptr) {
+            os << "empty";
         }
-        for (Node *cur = top; cur != nullptr; cur = cur->next) {
-            std::cout << cur->info << " ";
+        for (Node *cur = stack.top; cur != nullptr; cur = cur->next) {
+            os << cur->info << " ";
         }
-        std::cout << std::endl;
+        return os;
     }
 };

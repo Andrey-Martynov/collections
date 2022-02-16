@@ -8,36 +8,36 @@ using namespace std;
 int main() {
     Stack<int> stack;
     cout << "Stack\n";
-    stack.print();
+    cout << stack << endl;
     for (int i = 0; i < 10; i++) {
         stack.push(i * 10);
-        stack.print();
+        cout << stack << endl;
     }
-    stack.print();
+    cout << stack << endl;
     cout << endl;
     for (int i = 0; i < 10; i++) {
         cout << stack.pop() << endl;
-        stack.print();
+        cout << stack << endl;
     }
 
     cout << "\n\nQueue\n";
     Queue<int> queue;
     for (int i = 0; i < 10; i++) {
         queue.push(i * 10);
-        queue.print();
+        cout << queue << endl;
     }
-    queue.print();
+    cout << queue << endl;
     cout << endl;
     for (int i = 0; i < 10; i++) {
         cout << queue.pop() << endl;
-        queue.print();
+        cout << queue << endl;
     }
 
     cout << "\n\nTree\n";
     Tree<int> tree([](int x, int y) { return x - y; });
     for (int i = 0; i < 10; i++) {
         tree.push(rand() % 1000);
-        tree.print();
+        cout << tree << endl;
     }
     return 0;
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ostream>
 #include "Stack.h"
 
 template<class T>
@@ -76,17 +77,17 @@ public:
         return false;
     }
 
-    void print() {
-        print(root);
-        std::cout << "\n";
+    friend std::ostream &operator<<(std::ostream &os, const Tree &tree) {
+        tree.print(os, tree.root);
+        return os;
     }
 
 private:
-    void print(Node *node) {
+    void print(std::ostream &os, Node *node) const {
         if (node != nullptr) {
-            print(node->left);
-            std::cout << node->info << " ";
-            print(node->right);
+            print(os, node->left);
+            os << node->info << " ";
+            print(os, node->right);
         }
     }
 };

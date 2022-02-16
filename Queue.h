@@ -48,14 +48,14 @@ public:
         return info;
     }
 
-    void print() {
-        std::cout << "-> ";
-        if (head == nullptr) {
-            std::cout << "empty";
+    friend std::ostream &operator<<(std::ostream &os, const Queue &queue) {
+        os << "-> ";
+        if (queue.head == nullptr) {
+            os << "empty";
         }
-        for (Node *cur = head; cur != nullptr; cur = cur->next) {
-            std::cout << cur->info << " ";
+        for (Node *cur = queue.head; cur != nullptr; cur = cur->next) {
+            os << cur->info << " ";
         }
-        std::cout << std::endl;
+        return os;
     }
 };
