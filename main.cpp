@@ -59,6 +59,15 @@ void print(Node<T> *top) {
     cout << endl;
 }
 
+template<class T>
+void clear(Node<T> *&top) {
+    while (top != nullptr) {
+        Node<T> *cur = top;
+        top = top->next;
+        delete cur;
+    }
+}
+
 int main() {
     Node<int> *top = nullptr;
     cout << "Stack\n";
@@ -84,5 +93,6 @@ int main() {
         cout << popFromQueue(top) << endl;
         print(top);
     }
+    clear(top);
     return 0;
 }
