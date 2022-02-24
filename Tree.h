@@ -77,6 +77,10 @@ public:
         return false;
     }
 
+    void remove(T info){
+//        todo
+    }
+
     friend std::ostream &operator<<(std::ostream &os, const Tree &tree) {
         tree.print(os, tree.root);
         return os;
